@@ -15,6 +15,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Get latest tag
+        id: latesttag
+        uses: WyriHaximus/github-action-get-previous-tag@v1
+        with:
+          fallback: latest
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -33,6 +38,6 @@ jobs:
           context: .
           file: ./WebService/Dockerfile
           push: true
-          tags: apodini/examplewebservice:latest
+          tags: ghcr.io/apodini/examplewebservice:latest,ghcr.io/apodini/examplewebservice:${{ steps.latesttag.outputs.tag }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
