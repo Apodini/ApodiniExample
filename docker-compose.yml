@@ -5,7 +5,7 @@ services:
   example-web-service:
     container_name: "example-web-service"
     # We need the address so the buildagent knows where to push the image
-    image: "ghcr.io/Apodini/ExampleWebService:latest"
+    image: "ghcr.io/apodini/examplewebservice:latest"
     build:
       context: ./WebService
       dockerfile: ./Dockerfile

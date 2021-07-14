@@ -10,7 +10,7 @@ services:
   example-web-service:
     container_name: "example-web-service"
     # We need the address so the buildagent knows where to pull the image from
-    image: "ghcr.io/Apodini/ExampleWebService:latest"
+    image: "ghcr.io/apodini/examplewebservice:latest"
     networks:
       - backend_network
     expose:
