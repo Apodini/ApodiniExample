@@ -22,22 +22,24 @@ jobs:
           fallback: latest
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      - name: Set up Docker Buildx
+      - name: Set up docker buildx
         uses: docker/setup-buildx-action@v1
         with:
           install: true
-      - name: Log in to the Container registry
+      - name: Log in to the container registry
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push Docker image
+      - name: Build and push docker image
+        id: buildandpush
         uses: docker/build-push-action@v2
         with:
           context: .
           file: ./WebService/Dockerfile
+          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
           push: true
           tags: ghcr.io/apodini/examplewebservice:latest,ghcr.io/apodini/examplewebservice:${{ steps.latesttag.outputs.tag }}
       - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        run: echo ${{ steps.buildandpush.outputs.digest }}
