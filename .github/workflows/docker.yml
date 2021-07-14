@@ -38,7 +38,6 @@ jobs:
         with:
           context: .
           file: ./WebService/Dockerfile
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
           push: true
           tags: ghcr.io/apodini/examplewebservice:latest,ghcr.io/apodini/examplewebservice:${{ steps.latesttag.outputs.tag }}
       - name: Image digest
