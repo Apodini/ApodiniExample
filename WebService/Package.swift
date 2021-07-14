@@ -12,7 +12,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/Apodini/Apodini.git", .upToNextMinor(from: "0.3.0")),
-        .package(path: "../Shared"),
+        .package(path: "../Shared")
     ],
     targets: [
         .executableTarget(

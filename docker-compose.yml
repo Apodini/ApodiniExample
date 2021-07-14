@@ -7,8 +7,8 @@ services:
     # We need the address so the buildagent knows where to push the image
     image: "ghcr.io/apodini/examplewebservice:latest"
     build:
-      context: ./WebService
-      dockerfile: ./Dockerfile
+      context: ./
+      dockerfile: ./WebService/Dockerfile
     networks:
       - backend_network
     expose:
