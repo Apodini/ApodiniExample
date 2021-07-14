@@ -13,7 +13,7 @@ class AppUITests: XCTestCase {
         
         // Check if the app is installed and remove it if nescessary
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
-        let icon = springboard.icons["Example App"]
+        let icon = springboard.icons["App"]
         
         if icon.exists && icon.isHittable {
             icon.press(forDuration: 2)
@@ -39,9 +39,8 @@ class AppUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
         // Go to the new contacts screen
-        app.navigationBars["Your Contacts"].buttons["add"].tap()
+        app.navigationBars["Your Contacts"].buttons["Add"].tap()
         
         // Enter information
         let testField = app.tables.textFields["Name"]

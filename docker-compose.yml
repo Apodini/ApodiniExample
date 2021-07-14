@@ -1,17 +1,14 @@
-version: '3.7'
+version: '3.9'
 
 services:
   # An Apodini Example Web Service
   example-web-service:
     container_name: "example-web-service"
     # We need the address so the buildagent knows where to push the image
-    image: "harbor.ase.in.tum.de/ios21-monorepo/serversideexample:latest"
+    image: "ghcr.io/Apodini/ExampleWebService:latest"
     build:
-      context: ./
-      dockerfile: ./WebService/Dockerfile
-    # During development, we want extensive logging
-    environment:
-      LOG_LEVEL: debug
+      context: ./WebService
+      dockerfile: ./Dockerfile
     networks:
       - backend_network
     expose:
@@ -21,8 +18,8 @@ services:
       - type: volume
         source: database
         target: /app/database/
-    # Pass the network interface (local docker network with 0.0.0.0) and the desired port to the Apodini web service
-    command: ["--hostname", "0.0.0.0", "--port", "80"]
+    # Pass the desired port and the path to the mounted database volume to the Apodini web service
+    command: ["--port", "80", "database-path", "/app/database/example.sqlite"]
     labels:
       # The domain the service will respond to
       - "traefik.http.routers.backend.rule=Host(`localhost`)"
