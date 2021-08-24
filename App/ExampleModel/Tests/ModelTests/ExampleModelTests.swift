@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import XCTest
 @testable import Model
+import XCTest
 
 
 final class ModelTests: XCTestCase {

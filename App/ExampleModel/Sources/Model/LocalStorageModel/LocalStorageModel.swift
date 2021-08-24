@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import Foundation
 import Combine
+import Foundation
 import Shared
 
 
@@ -20,8 +20,7 @@ public class LocalStorageModel: Model {
     
     /// Creates a `Model` that stores information locally on the filesystem
     public convenience init() {
-        self.init(contacts: Contact.loadFromFile(),
-                  residencies: Residence.loadFromFile())
+        self.init(contacts: Contact.loadFromFile(), residencies: Residence.loadFromFile())
         
         // Subscribe to the `Publisher` provided by the `@Published` property wrapper and store the
         // `Account`s and `Transaction`s on disk once we receive a new value

@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import SwiftUI
-import Model
 import Foundation
+import Model
+import SwiftUI
 
 
 @main

@@ -20,6 +20,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/Apodini/Apodini.git", .upToNextMinor(from: "0.5.0")),
+        .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", from: "4.1.0"),
         .package(path: "../Shared")
     ],
     targets: [
@@ -36,14 +37,15 @@ let package = Package(
                 .product(name: "ApodiniREST", package: "Apodini"),
                 .product(name: "ApodiniOpenAPI", package: "Apodini"),
                 .product(name: "ApodiniDatabase", package: "Apodini"),
+                .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
                 .product(name: "Shared", package: "Shared")
             ]
         ),
         .testTarget(
             name: "ExampleWebServiceTests",
             dependencies: [
-                //.product(name: "XCTApodini", package: "Apodini"),
-                //.product(name: "XCTApodiniDatabase", package: "Apodini"),
+                // .product(name: "XCTApodini", package: "Apodini"),
+                // .product(name: "XCTApodiniDatabase", package: "Apodini"),
                 .target(name: "ExampleWebService")
             ]
         )

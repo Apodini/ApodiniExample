@@ -6,9 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
-import SwiftUI
 import Combine
 import Model
+import SwiftUI
+
 
 struct EditResidence: View {
     @Environment(\.presentationMode) private var presentationMode
@@ -17,12 +18,9 @@ struct EditResidence: View {
     
     @State private var loadingCancellable: AnyCancellable?
     
+    
     var navigationTitle: String {
         viewModel.id == nil ? "Create New Residence" : "Residence"
-    }
-    
-    init(_ model: Model, contact: Contact, id: Residence.ID) {
-        viewModel = EditResidenceViewModel(model, contact: contact, id: id)
     }
     
     var body: some View {
@@ -61,6 +59,12 @@ struct EditResidence: View {
             }
         }
     }
+    
+    
+    init(_ model: Model, contact: Contact, id: Residence.ID) {
+        viewModel = EditResidenceViewModel(model, contact: contact, id: id)
+    }
+    
     
     private func save() {
         loadingCancellable = viewModel.save().sink { _ in }

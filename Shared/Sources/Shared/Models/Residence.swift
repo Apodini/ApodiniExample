@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import Foundation
 import FluentKit
+import Foundation
 
 
 // MARK: Residence

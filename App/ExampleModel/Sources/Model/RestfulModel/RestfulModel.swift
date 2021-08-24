@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import Foundation
 import Combine
+import Foundation
 import Shared
 
 
@@ -20,8 +20,7 @@ public class RestfulModel: LocalStorageModel {
     }()
     
     public convenience init() {
-        self.init(contacts: Contact.loadFromFile(),
-                  residencies: Residence.loadFromFile())
+        self.init(contacts: Contact.loadFromFile(), residencies: Residence.loadFromFile())
         
         $contacts
             .sink {
@@ -102,25 +101,29 @@ public class RestfulModel: LocalStorageModel {
     
     private func refresh() {
         Contact.get()
-            .sink(receiveCompletion: { completion in
+            .sink(
+                receiveCompletion: { completion in
                     if case .failure = completion {
                         self.serverError = .loadingFailed(Contact.self)
                     }
                 },
                 receiveValue: { contacts in
                     self.contacts = contacts
-                })
+                }
+            )
             .store(in: &cancellables)
         
         Residence.get()
-            .sink(receiveCompletion: { completion in
+            .sink(
+                receiveCompletion: { completion in
                     if case .failure = completion {
                         self.serverError = .loadingFailed(Residence.self)
                     }
                 },
                 receiveValue: { residencies in
                     self.residencies = residencies
-                })
+                }
+            )
             .store(in: &cancellables)
     }
 }

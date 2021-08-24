@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import SwiftUI
 import Model
+import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var model: Model
@@ -47,7 +47,7 @@ struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
-                ContentView().colorScheme(colorScheme)
+            ContentView().colorScheme(colorScheme)
         }.environmentObject(model)
     }
 }

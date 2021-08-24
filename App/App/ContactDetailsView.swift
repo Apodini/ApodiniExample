@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import SwiftUI
-import Model
 import Combine
+import Model
+import SwiftUI
 
 struct ContactDetailsView: View {
     @EnvironmentObject private var model: Model

@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+import Combine
 import Foundation
 import Model
-import Combine
 
 class EditResidenceViewModel: ObservableObject {
     @Published var address: String = ""
@@ -48,11 +48,13 @@ class EditResidenceViewModel: ObservableObject {
             return Fail(error: ServiceError.saveFailed(Residence.self)).eraseToAnyPublisher()
         }
         
-        let residence = Residence(id: self.id,
-                                  address: self.address,
-                                  postalCode: self.postalCode,
-                                  country: self.country,
-                                  contact: contactID)
+        let residence = Residence(
+            id: self.id,
+            address: self.address,
+            postalCode: self.postalCode,
+            country: self.country,
+            contact: contactID
+        )
         
         return model.save(residence)
             .map {

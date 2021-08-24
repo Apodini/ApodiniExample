@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+import Combine
 import Foundation
 import Model
-import Combine
 
 class EditContactViewModel: ObservableObject {
     @Published var name: String = ""

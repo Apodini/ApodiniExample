@@ -7,11 +7,12 @@
 //
 
 import Apodini
+import ApodiniDatabase
 import ApodiniOpenAPI
 import ApodiniREST
-import ApodiniDatabase
-import Shared
 import ArgumentParser
+import FluentSQLiteDriver
+import Shared
 
 
 public struct Example: WebService {
@@ -19,8 +20,6 @@ public struct Example: WebService {
     var port: Int = 80
     @Option(help: "The path the database file should be saved in")
     var databasePath: String = "./example.sqlite"
-    @Flag(help: "Set to true if you want to revert the database migrations")
-    var revertDatabaseMigrations = false
     
     
     public var configuration: Configuration {
@@ -32,17 +31,10 @@ public struct Example: WebService {
         // Defines on which hostname and port the webservice should be bound to, configurable via CLI-arguments, else defaults
         HTTPConfiguration(port: port)
         
-        // If the appropriate CLI flag is passed, revert the database migrations
-        if revertDatabaseMigrations {
-            DatabaseRevertConfiguration(.sqlite(.file(databasePath)))
-                .addMigrations(ContactMigration())
-                .addMigrations(ResidenceMigration())
-        } else {
-            // Setup of example database (in this case SQlite) and add migrations to create the respective tables
-            DatabaseConfiguration(.sqlite(.file(databasePath)))
-                .addMigrations(ContactMigration())
-                .addMigrations(ResidenceMigration())
-        }
+        // Setup of example database (in this case SQlite) and add migrations to create the respective tables
+        DatabaseConfiguration(.sqlite(.file(databasePath)), as: .sqlite)
+            .addMigrations(ContactMigration())
+            .addMigrations(ResidenceMigration())
     }
 
     public var content: some Component {

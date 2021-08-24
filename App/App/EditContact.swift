@@ -6,9 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
-import SwiftUI
-import Model
 import Combine
+import Model
+import SwiftUI
+
 
 struct EditContact: View {
     @Environment(\.presentationMode) private var presentationMode
@@ -17,12 +18,9 @@ struct EditContact: View {
     
     @State private var loadingCancellable: AnyCancellable?
     
+    
     var navigationTitle: String {
         viewModel.id == nil ? "Create New Contact" : "Edit Contact"
-    }
-    
-    init(_ model: Model, id: Contact.ID) {
-        viewModel = EditContactViewModel(model, id: id)
     }
     
     var body: some View {
@@ -42,14 +40,6 @@ struct EditContact: View {
                     }
                 }
         }
-    }
-    
-    private func save() {
-        loadingCancellable = viewModel.save().sink { _ in }
-    }
-    
-    private func delete() {
-        loadingCancellable = viewModel.delete().sink { _ in }
     }
     
     private var form: some View {
@@ -82,6 +72,20 @@ struct EditContact: View {
                 }
             }
         }
+    }
+    
+    
+    init(_ model: Model, id: Contact.ID) {
+        viewModel = EditContactViewModel(model, id: id)
+    }
+    
+    
+    private func save() {
+        loadingCancellable = viewModel.save().sink { _ in }
+    }
+    
+    private func delete() {
+        loadingCancellable = viewModel.delete().sink { _ in }
     }
 }
 
