@@ -1,9 +1,9 @@
 //
-//  NetworkManager+ArrayExtensions.swift
-//  Model
+// This source file is part of the Apodini Example open source project
 //
-//  Created by Paul Schmiedmayer on 10/11/19.
-//  Copyright © 2020 TUM LS1. All rights reserved.
+// SPDX-FileCopyrightText: 2018-2021 Paul Schmiedmayer and project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+//
+// SPDX-License-Identifier: MIT
 //
 
 import Foundation

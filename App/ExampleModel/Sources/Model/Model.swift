@@ -1,8 +1,9 @@
 //
-//  Model.swift
-//  SampleApp
+// This source file is part of the Apodini Example open source project
 //
-//  Created by Hans Santoso on 04.05.21.
+// SPDX-FileCopyrightText: 2018-2021 Paul Schmiedmayer and project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+//
+// SPDX-License-Identifier: MIT
 //
 
 import Foundation
