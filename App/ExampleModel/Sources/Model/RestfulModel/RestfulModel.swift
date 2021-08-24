@@ -1,5 +1,13 @@
-import Foundation
+//
+// This source file is part of the Apodini Example open source project
+//
+// SPDX-FileCopyrightText: 2018-2021 Paul Schmiedmayer and project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+//
+// SPDX-License-Identifier: MIT
+//
+
 import Combine
+import Foundation
 import Shared
 
 
@@ -12,8 +20,7 @@ public class RestfulModel: LocalStorageModel {
     }()
     
     public convenience init() {
-        self.init(contacts: Contact.loadFromFile(),
-                  residencies: Residence.loadFromFile())
+        self.init(contacts: Contact.loadFromFile(), residencies: Residence.loadFromFile())
         
         $contacts
             .sink {
@@ -94,25 +101,29 @@ public class RestfulModel: LocalStorageModel {
     
     private func refresh() {
         Contact.get()
-            .sink(receiveCompletion: { completion in
+            .sink(
+                receiveCompletion: { completion in
                     if case .failure = completion {
                         self.serverError = .loadingFailed(Contact.self)
                     }
                 },
                 receiveValue: { contacts in
                     self.contacts = contacts
-                })
+                }
+            )
             .store(in: &cancellables)
         
         Residence.get()
-            .sink(receiveCompletion: { completion in
+            .sink(
+                receiveCompletion: { completion in
                     if case .failure = completion {
                         self.serverError = .loadingFailed(Residence.self)
                     }
                 },
                 receiveValue: { residencies in
                     self.residencies = residencies
-                })
+                }
+            )
             .store(in: &cancellables)
     }
 }

@@ -1,5 +1,13 @@
-import SwiftUI
+//
+// This source file is part of the Apodini Example open source project
+//
+// SPDX-FileCopyrightText: 2018-2021 Paul Schmiedmayer and project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+//
+// SPDX-License-Identifier: MIT
+//
+
 import Model
+import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var model: Model
@@ -39,7 +47,7 @@ struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
-                ContentView().colorScheme(colorScheme)
+            ContentView().colorScheme(colorScheme)
         }.environmentObject(model)
     }
 }

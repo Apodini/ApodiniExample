@@ -1,6 +1,15 @@
-import SwiftUI
+//
+// This source file is part of the Apodini Example open source project
+//
+// SPDX-FileCopyrightText: 2018-2021 Paul Schmiedmayer and project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+//
+// SPDX-License-Identifier: MIT
+//
+
 import Combine
 import Model
+import SwiftUI
+
 
 struct EditResidence: View {
     @Environment(\.presentationMode) private var presentationMode
@@ -9,12 +18,9 @@ struct EditResidence: View {
     
     @State private var loadingCancellable: AnyCancellable?
     
+    
     var navigationTitle: String {
         viewModel.id == nil ? "Create New Residence" : "Residence"
-    }
-    
-    init(_ model: Model, contact: Contact, id: Residence.ID) {
-        viewModel = EditResidenceViewModel(model, contact: contact, id: id)
     }
     
     var body: some View {
@@ -53,6 +59,12 @@ struct EditResidence: View {
             }
         }
     }
+    
+    
+    init(_ model: Model, contact: Contact, id: Residence.ID) {
+        viewModel = EditResidenceViewModel(model, contact: contact, id: id)
+    }
+    
     
     private func save() {
         loadingCancellable = viewModel.save().sink { _ in }

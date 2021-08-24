@@ -1,5 +1,13 @@
-import Foundation
+//
+// This source file is part of the Apodini Example open source project
+//
+// SPDX-FileCopyrightText: 2018-2021 Paul Schmiedmayer and project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+//
+// SPDX-License-Identifier: MIT
+//
+
 import Combine
+import Foundation
 
 enum NetworkManager {
     struct DataWrapper<D: Decodable>: Decodable {
@@ -27,10 +35,12 @@ enum NetworkManager {
     ///   - authorization: The value that should be added the `Authorization` header field
     ///   - body: The HTTP body that should be added to the `URLRequest`
     /// - Returns: The created `URLRequest`
-    static func urlRequest(_ method: String,
-                           url: URL,
-                           authorization: String? = authorization,
-                           body: Data? = nil) -> URLRequest {
+    static func urlRequest(
+        _ method: String,
+        url: URL,
+        authorization: String? = authorization,
+        body: Data? = nil
+    ) -> URLRequest {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -46,11 +56,11 @@ enum NetworkManager {
     ///     - route: The route to get the `Element` from
     ///     - authorization: The `String` that should written in the `Authorization` header field
     /// - Returns: An `AnyPublisher` that contains the `Element` from the server or or an `Error` in the case of an error
-    static func getElement<Element: Decodable>(on route: URL,
-                                               authorization: String? = authorization) -> AnyPublisher<Element, Error> {
-        URLSession.shared.dataTaskPublisher(for:
-                urlRequest("GET", url: route, authorization: authorization)
-            )
+    static func getElement<Element: Decodable>(
+        on route: URL,
+        authorization: String? = authorization
+    ) -> AnyPublisher<Element, Error> {
+        URLSession.shared.dataTaskPublisher(for: urlRequest("GET", url: route, authorization: authorization))
             .map(\.data)
             .decode(type: DataWrapper<Element>.self, decoder: decoder)
             .map(\.data)
@@ -63,8 +73,10 @@ enum NetworkManager {
     ///     - route: The route to get the `Element`s from
     ///     - authorization: The `String` that should written in the `Authorization` header field
     /// - Returns: An `AnyPublisher` that contains an `Array` of  `Element` from the server or an empty `Array` in the case of an error
-    static func getElements<Element: Decodable>(on route: URL,
-                                                authorization: String? = authorization) -> AnyPublisher<[Element], Error> {
+    static func getElements<Element: Decodable>(
+        on route: URL,
+        authorization: String? = authorization
+    ) -> AnyPublisher<[Element], Error> {
         getElement(on: route, authorization: authorization)
             .eraseToAnyPublisher()
     }
@@ -75,12 +87,12 @@ enum NetworkManager {
     ///     - route: The route to get the `Element`s from
     ///     - authorization: The `String` that should written in the `Authorization` header field
     /// - Returns: An `AnyPublisher` that contains the created `Element` from the server or an `Error` in the case of an error
-    static func postElement<T: Codable>(_ element: T,
-                                        authorization: String? = authorization,
-                                        on route: URL) -> AnyPublisher<T, Error> {
-        URLSession.shared.dataTaskPublisher(for:
-                urlRequest("POST", url: route, authorization: authorization, body: try? encoder.encode(element))
-            )
+    static func postElement<T: Codable>(
+        _ element: T,
+        authorization: String? = authorization,
+        on route: URL
+    ) -> AnyPublisher<T, Error> {
+        URLSession.shared.dataTaskPublisher(for: urlRequest("POST", url: route, authorization: authorization, body: try? encoder.encode(element)))
             .map(\.data)
             .decode(type: DataWrapper<T>.self, decoder: decoder)
             .map(\.data)
@@ -94,12 +106,12 @@ enum NetworkManager {
     ///     - route: The route to get the `Element`s from
     ///     - authorization: The `String` that should written in the `Authorization` header field
     /// - Returns: An `AnyPublisher` that contains the updated `Element` from the server or an `Error` in the case of an error
-    static func putElement<T: Codable>(_ element: T,
-                                       authorization: String? = authorization,
-                                       on route: URL) -> AnyPublisher<T, Error> {
-        URLSession.shared.dataTaskPublisher(for:
-                urlRequest("PUT", url: route, authorization: authorization, body: try? encoder.encode(element))
-            )
+    static func putElement<T: Codable>(
+        _ element: T,
+        authorization: String? = authorization,
+        on route: URL
+    ) -> AnyPublisher<T, Error> {
+        URLSession.shared.dataTaskPublisher(for: urlRequest("PUT", url: route, authorization: authorization, body: try? encoder.encode(element)))
             .map(\.data)
             .decode(type: DataWrapper<T>.self, decoder: decoder)
             .map(\.data)
@@ -112,11 +124,11 @@ enum NetworkManager {
     ///     - route: The route that identifes the resource
     ///     - authorization: The `String` that should written in the `Authorization` header field
     /// - Returns: An `AnyPublisher` that contains indicates of the deletion was successful
-    static func delete(at route: URL,
-                       authorization: String? = authorization) -> AnyPublisher<Void, Error> {
-        URLSession.shared.dataTaskPublisher(for:
-                urlRequest("DELETE", url: route, authorization: authorization)
-            )
+    static func delete(
+        at route: URL,
+        authorization: String? = authorization
+    ) -> AnyPublisher<Void, Error> {
+        URLSession.shared.dataTaskPublisher(for: urlRequest("DELETE", url: route, authorization: authorization))
             .tryMap { _, response in
                 guard let response = response as? HTTPURLResponse, 200..<299 ~= response.statusCode else {
                     throw URLError(.cannotRemoveFile)

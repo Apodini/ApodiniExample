@@ -1,6 +1,14 @@
+//
+// This source file is part of the Apodini Example open source project
+//
+// SPDX-FileCopyrightText: 2018-2021 Paul Schmiedmayer and project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+//
+// SPDX-License-Identifier: MIT
+//
+
+import Combine
 import Foundation
 import Model
-import Combine
 
 class EditResidenceViewModel: ObservableObject {
     @Published var address: String = ""
@@ -40,11 +48,13 @@ class EditResidenceViewModel: ObservableObject {
             return Fail(error: ServiceError.saveFailed(Residence.self)).eraseToAnyPublisher()
         }
         
-        let residence = Residence(id: self.id,
-                                  address: self.address,
-                                  postalCode: self.postalCode,
-                                  country: self.country,
-                                  contact: contactID)
+        let residence = Residence(
+            id: self.id,
+            address: self.address,
+            postalCode: self.postalCode,
+            country: self.country,
+            contact: contactID
+        )
         
         return model.save(residence)
             .map {

@@ -1,13 +1,13 @@
 //
-//  LocalStorageModel.swift
-//  Model
+// This source file is part of the Apodini Example open source project
 //
-//  Created by Paul Schmiedmayer on 3/23/20.
-//  Copyright © 2020 TUM LS1. All rights reserved.
+// SPDX-FileCopyrightText: 2018-2021 Paul Schmiedmayer and project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+//
+// SPDX-License-Identifier: MIT
 //
 
-import Foundation
 import Combine
+import Foundation
 import Shared
 
 
@@ -20,8 +20,7 @@ public class LocalStorageModel: Model {
     
     /// Creates a `Model` that stores information locally on the filesystem
     public convenience init() {
-        self.init(contacts: Contact.loadFromFile(),
-                  residencies: Residence.loadFromFile())
+        self.init(contacts: Contact.loadFromFile(), residencies: Residence.loadFromFile())
         
         // Subscribe to the `Publisher` provided by the `@Published` property wrapper and store the
         // `Account`s and `Transaction`s on disk once we receive a new value

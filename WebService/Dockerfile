@@ -1,7 +1,15 @@
+#                   
+# This source file is part of the Apodini Example open source project
+# 
+# SPDX-FileCopyrightText: 2018-2021 Paul Schmiedmayer and project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+# 
+# SPDX-License-Identifier: MIT
+# 
+
 # ================================
 # Build image
 # ================================
-FROM swift:5.4-focal as build
+FROM swiftlang/swift:nightly-5.5-focal as build
 
 # Install OS updates and, if needed, sqlite3
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
@@ -17,7 +25,7 @@ WORKDIR /build
 COPY . .
 
 # Build everything, with optimizations
-RUN swift build -Xswiftc -Xfrontend -Xswiftc -sil-verify-none -c release --package-path ./WebService
+RUN swift build -c release --package-path ./WebService
 
 # Switch to the staging area
 WORKDIR /staging
@@ -42,7 +50,7 @@ RUN mkdir database
 # ================================
 # Run image
 # ================================
-FROM swift:5.4-focal-slim
+FROM swiftlang/swift:nightly-5.5-focal-slim
 
 # Make sure all system packages are up to date.
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
