@@ -29,7 +29,7 @@ public struct Example: WebService {
         }
         
         // Defines on which hostname and port the webservice should be bound to, configurable via CLI-arguments, else defaults
-        HTTPConfiguration(port: port)
+        HTTPConfiguration(bindAddress: .interface(port: port))
         
         // Setup of example database (in this case SQlite) and add migrations to create the respective tables
         DatabaseConfiguration(.sqlite(.file(databasePath)), as: .sqlite)
