@@ -18,6 +18,8 @@ jobs:
     uses: Apodini/.github/.github/workflows/build-and-test.yml@v1
     with:
       packagename: ApodiniExample
+      aptgetdependencies: libsqlite3-dev
+      yumdependencies: sqlite-devel
       path: ./WebService/
   reuse_action:
     name: REUSE Compliance Check
