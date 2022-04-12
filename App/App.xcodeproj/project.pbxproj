@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6539CEB326416A43004A62AB /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 6539CEB226416A43004A62AB /* Shared */; };
-		659C4E0F26416CCF00B0EDAC /* Model in Frameworks */ = {isa = PBXBuildFile; productRef = 659C4E0E26416CCF00B0EDAC /* Model */; };
+		65BD651B2805795B0067C2F1 /* Model in Frameworks */ = {isa = PBXBuildFile; productRef = 65BD651A2805795B0067C2F1 /* Model */; };
 		65EA13182651D1FC00381CEE /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA13172651D1FC00381CEE /* AppTests.swift */; };
 		65EA13262651D20E00381CEE /* AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA13252651D20E00381CEE /* AppUITests.swift */; };
 		E89AF67C2640FB7300C38370 /* SampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89AF67B2640FB7300C38370 /* SampleApp.swift */; };
@@ -40,7 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6539CEAD264167D0004A62AB /* ExampleModel */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExampleModel; sourceTree = SOURCE_ROOT; };
+		65BD6519280579490067C2F1 /* ExampleModel */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExampleModel; sourceTree = SOURCE_ROOT; };
 		65EA13152651D1FC00381CEE /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65EA13172651D1FC00381CEE /* AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTests.swift; sourceTree = "<group>"; };
 		65EA13232651D20E00381CEE /* AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				659C4E0F26416CCF00B0EDAC /* Model in Frameworks */,
+				65BD651B2805795B0067C2F1 /* Model in Frameworks */,
 				6539CEB326416A43004A62AB /* Shared in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,7 +124,7 @@
 		E89AF67A2640FB7300C38370 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				6539CEAD264167D0004A62AB /* ExampleModel */,
+				65BD6519280579490067C2F1 /* ExampleModel */,
 				E89AF67B2640FB7300C38370 /* SampleApp.swift */,
 				E89AF67D2640FB7300C38370 /* ContentView.swift */,
 				E8FCF8C126540C69004C5E20 /* EditContactViewModel.swift */,
@@ -199,7 +199,7 @@
 			name = App;
 			packageProductDependencies = (
 				6539CEB226416A43004A62AB /* Shared */,
-				659C4E0E26416CCF00B0EDAC /* Model */,
+				65BD651A2805795B0067C2F1 /* Model */,
 			);
 			productName = SampleApp;
 			productReference = E89AF6782640FB7300C38370 /* App.app */;
@@ -630,7 +630,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Shared;
 		};
-		659C4E0E26416CCF00B0EDAC /* Model */ = {
+		65BD651A2805795B0067C2F1 /* Model */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Model;
 		};
