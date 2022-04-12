@@ -19,4 +19,4 @@ jobs:
     uses: Apodini/.github/.github/workflows/docker-build-and-push.yml@v1
     with:
       docker-file: ./WebService/Dockerfile
-      image-name: apodini/template
+      image-name: apodini/examplewebservice
