@@ -43,7 +43,7 @@ You can test out the API by starting up the web service using the `$ docker comp
 
 **Create a New Contact Entry:**
 
-`POST` at `/v1/contacts`, e.g. [`http://localhost/v1/contacts`](http://localhost/v1/contacts) with a payload encoded in JSON (header `Content-Type` set to `application/json`) that encodes a contact:
+`POST` at `/contacts`, e.g. [`http://localhost/contacts`](http://localhost/contacts) with a payload encoded in JSON (header `Content-Type` set to `application/json`) that encodes a contact:
 ```json
 {
  "birthday": 648225181.40703702,
@@ -55,26 +55,26 @@ You can try out the following curl command to set a request to the gateway:
 curl --header "Content-Type: application/json" \
    --request POST \
    --data '{"birthday": 648225181.40703702, "name": "Paul"}' \
-   http://localhost/v1/contacts
+   http://localhost/contacts
 ```
 
 **Get All Contacts or a Contact by ID**
 
-`GET` at `/v1/contacts`, e.g. [`http://localhost/v1/contacts`](http://localhost/v1/contacts) that returns the stored contacts.  
+`GET` at `/contacts`, e.g. [`http://localhost/contacts`](http://localhost/contacts) that returns the stored contacts.  
 You can try out the following curl command to get a list of contacts:
 ```bash
-curl http://localhost/v1/contacts
+curl http://localhost/contacts
 ```
 
-You can get a single contact using `GET` at `/v1/contacts/{contactID}`, e.g. [`http://localhost/v1/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F`](http://localhost/v1/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F) that returns the stored contacts.  
+You can get a single contact using `GET` at `/contacts/{contactID}`, e.g. [`http://localhost/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F`](http://localhost/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F) that returns the stored contacts.  
 You can try out the following curl command to get a contact by ID:
 ```bash
-curl http://localhost/v1/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F
+curl http://localhost/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F
 ```
 
 **Update an Existing Contact:**
 
-`POST` at `/v1/contacts/{contactID}`, e.g. [`http://localhost/v1/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F`](http://localhost/v1/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F) with a payload encoded in JSON (header `Content-Type` set to `application/json`) that encodes a contact:
+`POST` at `/contacts/{contactID}`, e.g. [`http://localhost/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F`](http://localhost/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F) with a payload encoded in JSON (header `Content-Type` set to `application/json`) that encodes a contact:
 ```json
 {
  "birthday": 648225181.40703702,
@@ -86,21 +86,21 @@ You can try out the following curl command to set a request to the gateway:
 curl --header "Content-Type: application/json" \
    --request PUT \
    --data '{"birthday": 648225181.40703702, "name": "Paul Schmiedmayer"}' \
-   http://localhost/v1/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F
+   http://localhost/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F
 ```
 
 **Delete a Contact**
 
-You can delete a contact using `DELETE` at `/v1/contacts/{contactID}`, e.g. [`http://localhost/v1/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F`](http://localhost/v1/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F).  
+You can delete a contact using `DELETE` at `/contacts/{contactID}`, e.g. [`http://localhost/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F`](http://localhost/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F).  
 You can try out the following curl command to delete a contact:
 ```bash
 curl --request DELETE \
-   http://localhost/v1/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F
+   http://localhost/contacts/E621E1F8-C36C-495A-93FC-0C247A3E6E5F
 ```
 
 **Create a New Residence for a Contact:**
 
-`POST` at `/v1/residencies/`, e.g. [`http://localhost/v1/residencies`](http://localhost/v1/residencies) with a payload encoded in JSON (header `Content-Type` set to `application/json`) that encodes a contact:
+`POST` at `/residencies/`, e.g. [`http://localhost/residencies`](http://localhost/residencies) with a payload encoded in JSON (header `Content-Type` set to `application/json`) that encodes a contact:
 ```json
 {
  "address": "Munich",
@@ -116,30 +116,30 @@ You can try out the following curl command to set a request to the gateway:
 curl --header "Content-Type: application/json" \
    --request POST \
    --data '{"address": "Munich", "contact": {"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E5F"}, "country": "Germany", "postalCode": "80331"}' \
-   http://localhost/v1/residencies
+   http://localhost/residencies
 ```
 
 **Get All Residence or a Residence by ID for a Contact**
 
-`GET` at `/v1/residencies`, e.g. [`http://localhost/v1/residencies`](http://localhost/v1/residencies) that returns the stored residencies.  
+`GET` at `/residencies`, e.g. [`http://localhost/residencies`](http://localhost/residencies) that returns the stored residencies.  
 You can try out the following curl command to get a list of contacts:
 ```bash
-curl http://localhost/v1/residencies
+curl http://localhost/residencies
 ```
 
-You can get a single residencie using `GET` at `/v1/residencies/{residencieID}`, e.g. [`http://localhost/v1/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F`](http://localhost/v1/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F) that returns the stored residence.  
+You can get a single residencie using `GET` at `/residencies/{residencieID}`, e.g. [`http://localhost/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F`](http://localhost/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F) that returns the stored residence.  
 You can try out the following curl command to get a residence by ID:
 ```bash
-curl http://localhost/v1/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F
+curl http://localhost/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F
 ```
 
 **Delete a Residence by ID for a Contact**
 
-You can delete a residence using `DELETE` at `/v1/residencies/{contactID}`, e.g. [`http://localhost/v1/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F`](http://localhost/v1/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F).  
+You can delete a residence using `DELETE` at `/residencies/{contactID}`, e.g. [`http://localhost/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F`](http://localhost/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F).  
 You can try out the following curl command to delete a residence:
 ```bash
 curl --request DELETE \
-   http://localhost/v1/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F
+   http://localhost/residencies/E621E1F8-C36C-495A-93FC-0C247A3E6E5F
 ```
 
 ### Client Application

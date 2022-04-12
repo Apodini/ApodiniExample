@@ -13,7 +13,7 @@ import Shared
 
 public class RestfulModel: LocalStorageModel {
     static var baseURL: URL = {
-        guard let baseURL = URL(string: "http://localhost/v1/") else {
+        guard let baseURL = URL(string: "http://localhost/") else {
             fatalError("Could not create the base URL for the Web Service")
         }
         return baseURL
@@ -83,7 +83,7 @@ public class RestfulModel: LocalStorageModel {
         Future { [self] promise in
             delete(id, in: \.contacts)
                 .sink { _ in
-                    refresh()
+                    self.refresh()
                     promise(.success(Void()))
                 }
                 .store(in: &cancellables)
