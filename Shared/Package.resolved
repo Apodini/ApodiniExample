@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/vapor/async-kit.git",
         "state": {
           "branch": null,
-          "revision": "e2f741640364c1d271405da637029ea6a33f754e",
-          "version": "1.11.1"
+          "revision": "c3329e444bafbb12d1d312af9191be95348a8175",
+          "version": "1.13.0"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/vapor/fluent-kit.git",
         "state": {
           "branch": null,
-          "revision": "63c13b1fcc5266d35df676a8e75bbb602497f12b",
-          "version": "1.23.4"
+          "revision": "d5c402e6dc5b40ab4ba4e8f97fbd7f5fcfbabca3",
+          "version": "1.33.3"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/vapor/sql-kit.git",
         "state": {
           "branch": null,
-          "revision": "afc74d888649f2b2a2f8cc7963be5eb179409610",
-          "version": "3.17.0"
+          "revision": "b7901df0611d3d7e869fa345020b3d0ae817c32d",
+          "version": "3.19.1"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/apple/swift-nio.git",
         "state": {
           "branch": null,
-          "revision": "d6e3762e0a5f7ede652559f53623baf11006e17c",
-          "version": "2.39.0"
+          "revision": "124119f0bb12384cef35aa041d7c3a686108722d",
+          "version": "2.40.0"
         }
       }
     ]
